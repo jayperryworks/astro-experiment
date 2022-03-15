@@ -23,8 +23,7 @@ const items = [
       {items.map(item => (
         <li>
           <a
-            class="nav-item type-font-accent type-link-undecorated type-weight-light"
-            class={segment === item.slug}
+            class={`nav-item ${segment === item.slug ? 'current' : ''} type-font-accent type-link-undecorated type-weight-light`}
             href={item.url}
           >
             {item.label}
