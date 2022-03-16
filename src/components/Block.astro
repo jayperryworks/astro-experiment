@@ -1,0 +1,9 @@
+---
+import Passage from './Passage.astro';
+import Figure from './Figure.astro';
+
+const { block } = Astro.props;
+---
+
+{(block.type === 'passage') && <Passage {...block} />}
+{(block.type === 'figure') && <Figure {...block} />}
