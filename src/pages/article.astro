@@ -2,33 +2,32 @@
 import '../styles/global.css';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Block from '../components/Block.astro';
+import { query, blockQueries, getString } from '../lib/prismicHelpers.js';
 
-// const articleQuery = await query(`
-// 	query{
-// 		allLongform_chapters(id: "${id}") {
-// 			edges {
-// 				node {
-// 					title
-// 					subtitle
-// 					highlight_color
-// 					primary_foreground_color
-// 					secondary_foreground_color
-// 					background_color
-// 					body {
-// 						${Object.keys(blockQueries).map((name) => {
-// 							return blockQueries[name]('Longform_chapterBody');
-// 						})}
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// `);
+const response = await query(`
+	query{
+		allLongform_chapters(id: "YbDuIRUAADEAj-if") {
+			edges {
+				node {
+					title
+					subtitle
+				}
+			}
+		}
+	}
+`);
+
+// clean up field names in the response data
+let {
+	title,
+	subtitle,
+	body
+} = await response.data.allLongform_chapters.edges[0].node;
 
 ---
 <BaseLayout pageTitle="article" path="article">
   <!-- <main class="padding-y-flow-wide padding-y-xwide">
     {body.map(block => <Block {block} />)}
   </main> -->
-  hello
+  {getString(title)}
 </BaseLayout>
