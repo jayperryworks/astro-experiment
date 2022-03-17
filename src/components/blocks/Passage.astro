@@ -1,10 +1,10 @@
 ---
-import '../styles/components/tooltip.css';
+import '../../styles/components/tooltip.css';
 
-const { body } = Astro.props;
+const { html } = Astro.props;
 ---
 
-<div class="content" set:html={body}></div>
+<div class="content" set:html={html}></div>
 
 <script>
 	const notes = document.querySelectorAll('.note');
@@ -15,6 +15,7 @@ const { body } = Astro.props;
 	});
 </script>
 
+<!-- use global here because the content is injected from the body prop -->
 <style global>
 	.note {
 		--size: 0.7em;

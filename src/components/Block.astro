@@ -1,9 +1,12 @@
 ---
-import Passage from './Passage.astro';
-import Figure from './Figure.astro';
+import Passage from './blocks/Passage.astro';
+import Figure from './blocks/Figure.astro';
+import ContentWrapper from './ContentWrapper.astro';
 
 const { block } = Astro.props;
 ---
 
-{(block.type === 'passage') && <Passage {...block} />}
-{(block.type === 'figure') && <Figure {...block} />}
+<ContentWrapper width={block.prominence || 'default'}>
+  {(block.type === 'passage') && <Passage {...block} />}
+  {(block.type === 'figure') && <Figure {...block} />}
+</ContentWrapper>

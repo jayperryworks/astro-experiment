@@ -1,0 +1,34 @@
+---
+import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Block from '../components/Block.astro';
+
+// const articleQuery = await query(`
+// 	query{
+// 		allLongform_chapters(id: "${id}") {
+// 			edges {
+// 				node {
+// 					title
+// 					subtitle
+// 					highlight_color
+// 					primary_foreground_color
+// 					secondary_foreground_color
+// 					background_color
+// 					body {
+// 						${Object.keys(blockQueries).map((name) => {
+// 							return blockQueries[name]('Longform_chapterBody');
+// 						})}
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// `);
+
+---
+<BaseLayout pageTitle="article" path="article">
+  <!-- <main class="padding-y-flow-wide padding-y-xwide">
+    {body.map(block => <Block {block} />)}
+  </main> -->
+  hello
+</BaseLayout>

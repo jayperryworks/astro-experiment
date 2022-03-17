@@ -4,8 +4,8 @@ import '../styles/global.css';
 import expand from '../icons/expand.svg?raw';
 
 // Component Imports
-import MainNav from '../components/MainNav.astro';
 import Block from '../components/Block.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 // You can import components from any supported Framework here!
 
 
@@ -13,7 +13,7 @@ import Block from '../components/Block.astro';
 // You can write any JavaScript/TypeScript that you'd like here.
 // It will run during the build, but never in the browser.
 // All variables are available to use in the HTML template below.
-let title = 'My Astro Site';
+let title = 'Jay Perry Works';
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
@@ -21,12 +21,13 @@ let title = 'My Astro Site';
 const body = [
 	{
 		type: 'figure',
-		path: 'https://via.placeholder.com/800x600',
-		alt: 'placeholder'
+		path: 'https://via.placeholder.com/1200x800',
+		alt: 'placeholder',
+		prominence: 'wide'
 	},
 	{
 		type: 'passage',
-		body: `
+		html: `
 			Lorem ipsum dolor sit amet 
 			<button class="note">
 				${expand}
@@ -36,20 +37,13 @@ const body = [
 				${expand}
 				<span class="tooltip center">Auctor aliquet porta.</span>
 			</button>. Fames tempor elementum est tortor fermentum eget at purus gravida tempus nullam.
-		`
+		`,
+		prominence: 'default'
 	}
 ];
 ---
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width">
-	<title>{title}</title>
-</head>
-<body>
-	<MainNav segment="home" />
-	<main>
+<BaseLayout path="home">
+	<main class="padding-y-flow-wide padding-y-xwide">
 		{body.map(block => <Block {block} />)}
 	</main>
-</body>
-</html>
+</BaseLayout>
